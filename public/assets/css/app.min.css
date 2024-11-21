@@ -36465,11 +36465,11 @@ body {
   color: #1AAFD0; 
 }
 .btn-custom-green {
-    background-color: #28a745; /* Warna hijau */
+    background-color: #28a745; 
     border: none;
     color: white;
     font-weight: bold;
-    transition: background-color 0.3s, transform 0.2s; /* Transisi untuk efek hover */
+    transition: background-color 0.3s, transform 0.2s; 
 }
 
 .btn-custom-green:hover {
@@ -36558,5 +36558,15 @@ input:checked + .slider {
 }
 
 input:checked + .slider:before {
-  transform: translateX(26px); /* Move the toggle to the right */
+  transform: translateX(26px); 
+}
+
+.stat-card-link {
+    text-decoration: none; 
+    color: inherit; 
+}
+
+.stat-card-link:hover {
+    background-color: #f0f0f0; 
+    cursor: pointer; 
 }

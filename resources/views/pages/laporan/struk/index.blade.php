@@ -25,6 +25,66 @@
 <script src="/assets/plugins/jszip/dist/jszip.min.js"></script>
 <script src="/assets/plugins/@highlightjs/cdn-assets/highlight.min.js"></script>
 <script src="/assets/js/demo/render.highlight.js"></script>
+<script>
+	$(document).ready(function() {
+		function fetchBillings() {
+			var nama = $('#wajibRetribusi').val();
+			var startDate = $('#StartDate').val();
+			var endDate = $('#EndDate').val();
+
+			$.ajax({
+				url: "{{ route('pages.laporan.struk.index') }}",
+				type: "GET",
+				data: {
+					nama: nama,
+					start_date: startDate,
+					end_date: endDate
+				},
+				success: function(response) {
+					$('#data-table-buttons tbody').empty();
+
+					if (response.length > 0) {
+						$.each(response, function(index, billing) {
+							$('#data-table-buttons tbody').append(`
+                                <tr class="${index % 2 === 0 ? 'even' : 'odd'} gradeX">
+                                    <td width="1%" class="fw-bold text-dark">${index + 1}</td>
+                                    <td>${billing.npwrd}</td>
+                                    <td>${billing.daftarUsaha_nama}</td>
+                                    <td>${billing.daftarUsaha_alamat}</td>
+                                    <td>${billing.ssrd_no_seri}</td>
+                                    <td>${billing.tanggal_rekam}</td>
+									<td>${billing.ssrd_no_akhir}</td>
+									<td>${billing.ssrd_jml_lembar}</td>
+									<td>${billing.ssrd_sisa}</td>
+									<td>${billing.ssrd_nilai_setor}</td>
+                                </tr>
+                            `);
+						});
+					} else {
+						$('#data-table-buttons tbody').append(`
+                            <tr>
+                                <td colspan="10" class="text-center">Data tidak ditemukan</td>
+                            </tr>
+                        `);
+					}
+				},
+				error: function() {
+					alert('Terjadi kesalahan, data tidak dapat dimuat.');
+				}
+			});
+		}
+
+
+		$('#wajibRetribusi, #StartDate, #EndDate').on('change', fetchBillings);
+		$('#resetFilters').on('click', function() {
+			$('#wajibRetribusi').val('');
+			$('#StartDate').val('');
+			$('#EndDate').val('');
+
+			fetchBillings();
+		});
+	});
+</script>
 @endpush
 
 @section('content')
@@ -54,7 +114,10 @@
 					<div class="col-md-6">
 						<div class="d-flex align-items-center"></div>
 						<select id="wajibRetribusi" class="form-select w-auto">
-							<option selected>-- Pilih Nama Wajib Pajak--</option>
+							<option value="" selected>-- Pilih Nama Wajib Pajak--</option>
+							@foreach($billings as $billing)
+							<option value="{{ $billing->daftarUsaha_nama }}">{{ $billing->daftarUsaha_nama }}</option>
+							@endforeach
 						</select>
 					</div>
 				</div>
@@ -76,13 +139,19 @@
 							<label for="wajibRetribusi" class="form-label me-1 mb-3">Tanggal Akhir :</label>
 							<div>
 								<div class="input-group-date" id="searchEndDate" data-target-input="nearest">
-									<input type="date" class="form-control datetimepicker-input Endate" id="EtartDate" maxlength="10" placeholder="yyyy-mm-dd" data-target="#searchEndDate">
+									<input type="date" class="form-control datetimepicker-input Endate" id="EndDate" maxlength="10" placeholder="yyyy-mm-dd" data-target="#searchEndDate">
 								</div>
 							</div>
 						</div>
 					</div>
 				</div>
 			</div>
+			<div class="container-fluid mt-3 text-start">
+				<button id="resetFilters" class="btn btn-secondary btn-sm">
+					<i class="fa fa-refresh"></i> Reset Filter
+				</button>
+			</div>
+
 			<div class="panel-body">
 				<table id="data-table-buttons" class="table table-striped table-bordered align-middle">
 					<thead>
