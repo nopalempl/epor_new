@@ -66,67 +66,75 @@
 <div class="dashboard-container mt-4">
 	<div class="row">
 		<div class="col-md-3 mb-4">
-			<div class="stat-card bg-skyblue">
-				<div class="stat-card-content">
-					<div class="stat-icon-background">
-						<i class="fas fa-file-invoice"></i>
+			<a href="/laporan/permohonan" class="stat-card-link">
+				<div class="stat-card bg-skyblue">
+					<div class="stat-card-content">
+						<div class="stat-icon-background">
+							<i class="fas fa-file-invoice"></i>
+						</div>
+						<div class="stat-text">
+							<h6>Jumlah Pengajuan</h6>
+							<h2>{{$jumlahPengajuan}}</h2>
+						</div>
 					</div>
-					<div class="stat-text">
-						<h6>Jumlah Pengajuan</h6>
-						<h2>{{$jumlahPengajuan}}</h2>
+					<div class="stat-graph">
 					</div>
 				</div>
-				<div class="stat-graph">
-				</div>
-			</div>
+			</a>
 		</div>
 
 		<div class="col-md-3 mb-4">
-			<div class="stat-card bg-lavender">
-				<div class="stat-card-content">
-					<div class="stat-icon-background">
-						<i class="fas fa-circle-check"></i>
+			<a href="/verifikasi/permohonan" class="stat-card-link">
+				<div class="stat-card bg-lavender">
+					<div class="stat-card-content">
+						<div class="stat-icon-background">
+							<i class="fas fa-circle-check"></i>
+						</div>
+						<div class="stat-text">
+							<h6>Proses Pengajuan</h6>
+							<h2>{{$pengajuanProses}}</h2>
+						</div>
 					</div>
-					<div class="stat-text">
-						<h6>Proses Pengajuan</h6>
-						<h2>{{$pengajuanProses}}</h2>
+					<div class="stat-graph">
 					</div>
 				</div>
-				<div class="stat-graph">
-				</div>
-			</div>
+			</a>
 		</div>
 
 		<div class="col-md-3 mb-4">
-			<div class="stat-card bg-mintgreen">
-				<div class="stat-card-content">
-					<div class="stat-icon-background">
-						<i class="fas fa-ticket"></i>
+			<a href="/rekap/setor/struk" class="stat-card-link">
+				<div class="stat-card bg-mintgreen">
+					<div class="stat-card-content">
+						<div class="stat-icon-background">
+							<i class="fas fa-ticket"></i>
+						</div>
+						<div class="stat-text">
+							<h6>Pengembalian Karcis</h6>
+							<h2>{{ number_format($totalJmlLembar) }}</h2>
+						</div>
 					</div>
-					<div class="stat-text">
-						<h6>Pengembalian Karcis</h6>
-						<h2>{{ number_format($totalJmlLembar) }}</h2>
+					<div class="stat-graph">
 					</div>
 				</div>
-				<div class="stat-graph">
-				</div>
-			</div>
+			</a>
 		</div>
 
 		<div class="col-md-3 mb-4">
-			<div class="stat-card bg-rosepink">
-				<div class="stat-card-content">
-					<div class="stat-icon-background">
-						<i class="fas fa-dollar-sign"></i>
+			<a href="/laporan/penerimaan" class="stat-card-link">
+				<div class="stat-card bg-rosepink">
+					<div class="stat-card-content">
+						<div class="stat-icon-background">
+							<i class="fas fa-dollar-sign"></i>
+						</div>
+						<div class="stat-text">
+							<h6>Penerimaan Retribusi</h6>
+							<h2>{{$formattedTotalSetor}}</h2>
+						</div>
 					</div>
-					<div class="stat-text">
-						<h6>Penerimaan Retribusi</h6>
-						<h2>{{$formattedTotalSetor}}</h2>
+					<div class="stat-graph">
 					</div>
 				</div>
-				<div class="stat-graph">
-				</div>
-			</div>
+			</a>
 		</div>
 	</div>
 	<!-- END col-3 -->

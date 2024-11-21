@@ -16,6 +16,7 @@ use App\Http\Controllers\InputSsrdController;
 use App\Http\Controllers\LaporanPenerimaanController;
 use App\Http\Controllers\LaporanStrukController;
 use App\Http\Controllers\StsController;
+use App\Http\Controllers\LaporanPersediaanController;
 
 Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login')->middleware('auth.redirect');
 Route::post('/login', [AuthController::class, 'login'])->middleware('auth.redirect');
@@ -140,7 +141,7 @@ Route::get('/billing/cetak/{id}', [BillingController::class, 'cetak'])->name('bi
 Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');
 Route::post('/login', [AuthController::class, 'login']);
 
-
+route::get('/laporan/persediaan/struk', [LaporanPersediaanController::class, 'index'])->name('pages.laporan.persediaan.index');
 
 
 
@@ -166,7 +167,6 @@ Route::get('/', function () {
 });
 Route::get('/dashboard', 'MainController@dashboard')->name('dashboard');
 Route::get('/permohonan/retur/usaha', 'MainController@permohonanReturUsaha')->name('permohonan-retur-usaha');
-Route::get('/laporan/persediaan/struk', 'MainController@laporanPersediaanStruk')->name('laporan-persediaan-struk');
 Route::get('/laporan/retur/struk', 'MainController@laporanReturStruk')->name('laporan-retur-struk');
 Route::get('/manajemen/user', 'MainController@manajemenUser')->name('manajemen-user');
 Route::get('/manajemen/struk', 'MainController@manajemenStruk')->name('manajemen-struk');
