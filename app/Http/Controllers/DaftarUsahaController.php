@@ -109,16 +109,17 @@ class DaftarUsahaController extends Controller
             'no_handphone' => 'required|string|max:15',
             'alamat_usaha' => 'required|string|max:255',
             'pemilik' => 'nullable|string|max:50',
+            'foto' => 'image|mimes:jpeg,png,jpg',
         ]);
-
-
 
         $usaha = DaftarUsaha::findOrFail($id);
 
+        $fotoPath = $usaha->foto;
+
         if ($request->hasFile('foto')) {
             $originalFileName = $request->file('foto')->getClientOriginalName();
-            $filePath = $request->file('foto')->storeAs('foto', $originalFileName, 'public');
-            $usaha->foto = 'foto/' . $originalFileName;
+            $fotoPath = $request->file('foto')->storeAs('foto', $originalFileName, 'public');
+            $fotoPath = '' . $originalFileName;
         }
 
         $usaha->update([
@@ -133,6 +134,7 @@ class DaftarUsahaController extends Controller
             'no_handphone' => $request->no_handphone,
             'alamat_usaha' => $request->alamat_usaha,
             'pemilik' => $request->pemilik,
+            'foto' => $fotoPath,
         ]);
 
         VerifikasiPermohonan::where('npwrd', $usaha->npwrd)->update([
@@ -144,9 +146,8 @@ class DaftarUsahaController extends Controller
 
         $usaha->save();
 
-        return redirect()->route('pages.daftar.usaha.index')->with('success', 'Data usaha berhasil diperbarui.');
+        return redirect()->back()->with('success', 'Data usaha berhasil diperbarui.');
     }
-
 
     public function destroy($id)
     {

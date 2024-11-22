@@ -67,8 +67,8 @@
                     <div class="form-group row mb-3">
                         <label class="col-lg-4 col-form-label form-label">Jenis</label>
                         <div class="col-lg-8 d-flex align-items-center">
-                            <input type="radio" id="pajak" name="jenis" value="pajak" required>
-                            <label for="pajak" style="margin-right: 20px;">Pajak</label>
+                            <!-- <input type="radio" id="pajak" name="jenis" value="pajak" required>
+                            <label for="pajak" style="margin-right: 20px;">Pajak</label> -->
                             <input type="radio" id="retribusi" name="jenis" value="retribusi" required>
                             <label for="retribusi">Retribusi</label>
                         </div>
