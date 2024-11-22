@@ -340,7 +340,7 @@
         });
 
         function formatNpwrd(npwrd) {
-            return `R.${npwrd.charAt(1)}.${npwrd.substring(2)}`;
+            return `R.${npwrd.charAt(1)}${npwrd.substring(2)}`;
         }
     });
 </script>
