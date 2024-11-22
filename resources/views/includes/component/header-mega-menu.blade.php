@@ -3,9 +3,9 @@
   <div class="navbar-nav">
     <div class="navbar-item dropdown dropdown-lg">
       <a href="#" class="navbar-link dropdown-toggle d-flex align-items-center" data-bs-toggle="dropdown">
-      <i class="fa fa-th-large fa-fw me-1"></i> 
-      <span class="d-lg-inline d-md-none">Mega</span>
-      <b class="caret ms-1"></b>
+        <i class="fa fa-th-large fa-fw me-1"></i>
+        <span class="d-lg-inline d-md-none">Mega</span>
+        <b class="caret ms-1"></b>
       </a>
       <div class="dropdown-menu dropdown-menu-lg">
         <div class="row">
@@ -70,15 +70,15 @@
     </div>
     <div class="navbar-item">
       <a href="javascript:;" class="navbar-link d-flex align-items-center">
-      <i class="fa fa-gem fa-fw me-1"></i>
-      <span class="d-lg-inline d-md-none">Client</span>
+        <i class="fa fa-gem fa-fw me-1"></i>
+        <span class="d-lg-inline d-md-none">Client</span>
       </a>
     </div>
     <div class="navbar-item dropdown">
       <a href="#" class="navbar-link dropdown-toggle d-flex align-items-center" data-bs-toggle="dropdown">
-      <i class="fa fa-database fa-fw me-1"></i>
-      <span class="d-lg-inline d-md-none">New</span>
-      <b class="caret ms-1"></b>
+        <i class="fa fa-database fa-fw me-1"></i>
+        <span class="d-lg-inline d-md-none">New</span>
+        <b class="caret ms-1"></b>
       </a>
       <div class="dropdown-menu">
         <a href="javascript:;" class="dropdown-item">Action</a>

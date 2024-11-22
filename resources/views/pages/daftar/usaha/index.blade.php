@@ -147,12 +147,13 @@
                 <h5 class="modal-title" id="editModalLabel">Edit Daftar Usaha</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
+            @foreach ($daftarUsaha as $usaha)
             <form id="editForm" method="POST">
                 @csrf
                 @method('PUT')
                 <div class="modal-body">
                     <div class="mb-3">
-                        <label for="nm_wr" class="form-label">NO. REGISTRASI</label>
+                        <label for="no_registrasi" class="form-label">NO. REGISTRASI</label>
                         <input type="text" class="form-control-2" id="no_registrasi" name="no_registrasi" required readonly>
                     </div>
                     <div class="mb-3">
@@ -218,20 +219,23 @@
                         <label for="pemilik" class="form-label">Pemilik</label>
                         <input type="text" class="form-control" id="pemilik" name="pemilik">
                     </div>
-                </div>
-                <div class="mb-3">
-                    <label for="foto" class="form-label">Upload Identitas</label>
-                    <input type="file" class="form-control" id="foto" name="foto" />
-                    <small class="form-text text-muted">Maksimal ukuran 2MB, format gambar(png,jpg,jpeg).</small>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="submit" class="btn btn-primary">Save changes</button>
-                </div>
+                    <div class="mb-3">
+                        <label for="foto" class="form-label">Upload Identitas</label>
+                        <input type="file" class="form-control" id="foto" name="foto" />
+                        <small class="form-text text-muted">Maksimal ukuran 2MB, format gambar(png,jpg,jpeg).</small>
+                        <div>
+                            <img id="foto" src="{{ asset('storage/foto/'.$usaha->foto) }}" alt="Foto KTP" class="img-thumbnail" style="max-height: 200px;">
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary">Save changes</button>
+                    </div>
             </form>
         </div>
     </div>
 </div>
+@endforeach
 <!-- END Edit Modal -->
 
 <script>
